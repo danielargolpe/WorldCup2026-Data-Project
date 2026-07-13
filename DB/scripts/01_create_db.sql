@@ -1,5 +1,5 @@
 -- Script 01: Database Creation
--- Location: DB/01_create_db.sql
+-- Location: DB/scripts/01_create_db.sql
 -- Description: Creates the global container database for all World Cup editions.
 
 CREATE DATABASE "WorldCup"
