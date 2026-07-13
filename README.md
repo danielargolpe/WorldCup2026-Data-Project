@@ -9,6 +9,12 @@ This project includes the design and implementation of a PostgreSQL relational d
 
 * **`dashboard/`**: Power BI file (`.pbix`) containing the interactive dashboard for tournament analytics and performance metrics.
 
+## Database Design
+
+Here is the Entity-Relationship Diagram (ERD) representing the modular core architecture of the World Cup 2026 database:
+
+![World Cup 2026 ERD](DB/ERD_WorldCup_2026.png)
+
 ## Technologies Implemented
 
 * **Database:** PostgreSQL (running on Ubuntu) & pgAdmin / VS Code.
