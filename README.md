@@ -10,7 +10,6 @@ This project includes the design and implementation of a PostgreSQL relational d
 Here is the Entity-Relationship Diagram (ERD) representing the modular core architecture of the **World Cup 2026 database**:
 
 ![World Cup 2026 ERD](DB/ERD_WorldCup_2026.png)
-
 The database schema has been fully refactored and normalized to **Third Normal Form (3NF)** to eliminate redundancy, ensure data integrity, and optimize query performance.
 
 ### Key Architectural Improvements:
