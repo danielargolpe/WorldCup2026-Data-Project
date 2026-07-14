@@ -10,7 +10,23 @@ CREATE TABLE IF NOT EXISTS "2026".teams (
     coach            TEXT             NOT NULL
 );
 
--- 2. Table: Players
+-- 2. Table: Stadiums
+CREATE TABLE IF NOT EXISTS "2026".stadiums (
+    stadium_id       INTEGER          GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    stadium_name     TEXT             NOT NULL,
+    stadium_city     VARCHAR(100)     NOT NULL,
+    stadium_country  VARCHAR(30)      NOT NULL,
+    stadium_capacity INTEGER          NOT NULL
+);
+
+-- 3. Table: Referees
+CREATE TABLE IF NOT EXISTS "2026".referees (
+    referee_id       INTEGER          GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    referee_name     TEXT             NOT NULL,
+    referee_country  VARCHAR(30)      NOT NULL
+);
+
+-- 4. Table: Players
 CREATE TABLE IF NOT EXISTS "2026".players (
     player_id        INTEGER          GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     player_name      TEXT             NOT NULL,
@@ -20,19 +36,20 @@ CREATE TABLE IF NOT EXISTS "2026".players (
     team_id          INTEGER          NOT NULL REFERENCES "2026".teams(team_id)
 );
 
--- 3. Table: Matches
+-- 5. Table: Matches
 CREATE TABLE IF NOT EXISTS "2026".matches (
     match_id         INTEGER          GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     stage            VARCHAR(20)      NOT NULL,
     match_date       DATE             NOT NULL,
-    stadium_name     TEXT             NOT NULL,
+    stadium_id       INTEGER          NOT NULL REFERENCES "2026".stadiums(stadium_id),
+    referee_id       INTEGER          NOT NULL REFERENCES "2026".referees(referee_id),
     home_team_id     INTEGER          NOT NULL REFERENCES "2026".teams(team_id),
     away_team_id     INTEGER          NOT NULL REFERENCES "2026".teams(team_id),
     home_score       INTEGER          NOT NULL,
     away_score       INTEGER          NOT NULL
 );
 
--- 4. Table: Match statistics
+-- 6. Table: Match statistics
 CREATE TABLE IF NOT EXISTS "2026".match_statistics (
     stat_id          INTEGER          GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     match_id         INTEGER          NOT NULL REFERENCES "2026".matches(match_id),
