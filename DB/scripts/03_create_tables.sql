@@ -30,9 +30,9 @@ CREATE TABLE IF NOT EXISTS "2026".referees (
 CREATE TABLE IF NOT EXISTS "2026".players (
     player_id        INTEGER          GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     player_name      TEXT             NOT NULL,
-    jersey_number    INTEGER          NOT NULL,
-    player_status    VARCHAR(10)      NOT NULL,
     player_position  VARCHAR(12)      NOT NULL,
+    birthdate        DATE             NOT NULL,
+    club             TEXT             NOT NULL,
     team_id          INTEGER          NOT NULL REFERENCES "2026".teams(team_id)
 );
 
