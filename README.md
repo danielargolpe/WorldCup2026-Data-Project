@@ -1,25 +1,34 @@
-# World Cup 2026: Databases, Machine Learning & Analytics
-This project includes the design and implementation of a PostgreSQL relational database for the World Cup 2026. In addition, a Machine Learning pipeline in Python for data analysis and prediction, and an interactive Power BI dashboard for data visualization.
+# World Cup 2026: Database design, Machine Learning & Analytics
+This project focuses on building a PostgreSQL relational database for the FIFA World Cup 2026, with plans to extend it into a data analytics project incorporating Python-based exploratory data analysis, machine learning, and an interactive Power BI dashboard.
 
-## Project Structure
-* **`DB/`**: SQL scripts for the creation of the schema `2026`, tables, data insertion, and analytics queries.
-* **`ML_pipeline/`**: Notebooks and Python scripts for data extraction, exploratory data analysis (EDA), and training of ML models.
-* **`dashboard/`**: Power BI file (`.pbix`) containing the interactive dashboard for tournament analytics and performance metrics.
+## Project structure
+* **`DB/`**: SQL scripts for database schema `2026` creation, data loading, data validation, and analytical queries.
+* **`ML_pipeline/`**: Planned Notebooks and Python scripts for data extraction, exploratory data analysis (EDA), machine learning model development.
+* **`dashboard/`**: Planned dashboard for tournament analysis, team performance, and player statistics.
 
-## Database Architecture (ERD)
-Here is the Entity-Relationship Diagram (ERD) representing the modular core architecture of the **World Cup 2026 database**:
-> You can view the full Entity-Relationship Diagram (ERD) file directly here: **[ERD_WorldCup_2026.png](DB/ERD_WorldCup_2026.png)**
-The database schema has been fully refactored and normalized to **Third Normal Form (3NF)** to eliminate redundancy, ensure data integrity, and optimize query performance.
+## Database architecture (ERD)
+The Entity-Relationship Diagram (ERD) illustrates the relational structure of the **World Cup 2026 database** The database is designed around relational principles to reduce data redundancy, maintain data integrity, and support future analytical queries.
+> You can see the full Entity-Relationship Diagram (ERD) file directly here: **[ERD_WorldCup_2026.png](DB/ERD_WorldCup_2026.png)**
 
-### Key Architectural Improvements:
-* **Normalization of Stadiums & Referees:** Originally designed as flat text inside the `matches` table, these entities were split into their own tables (`stadiums` and `referees`). This avoids repeating physical stadium data or referee nationalities across multiple matches.
-* **Semantic Clarity:** Columns were renamed to be self-documenting and avoid ambiguities (e.g., using `stadium_country` and `referee_country` instead of a generic `country` field).
-* **Strict Referential Integrity:** The `matches` table now lightweightly connects everything using foreign keys (`stadium_id`, `referee_id`, `home_team_id`, `away_team_id`) pointing to their primary sources of truth.
+## Key Design Decisions
+- **Entity separation:** Teams, players, referees, and stadiums are stored in separate tables to organize data and reduce unnecessary duplication.
+- **Semantic clarity:** Column names such as `stadium_country` and `referee_country` clearly identify the information stored in each field.
+- **Referential integrity:** Primary and foreign keys establish relationships between players and teams, and allow matches to reference teams, referees, and stadiums.
+- **Data validation:** SQL queries are used to check record counts, missing values, and data consistency.
 
-## Technologies Implemented
-* **Database:** PostgreSQL (running on Ubuntu) & pgAdmin / VS Code.
-* **Programming Language:** Python (Pandas, Scikit-learn, etc.).
-* **Business Intelligence:** Power BI.
-* **Version Control:** Git & GitHub.
+## Database Status
+The PostgreSQL database has been created, and the following tables have been populated and validated:
+- **`teams`**: 48 national teams.
+- **`players`**: 1,248 player records, including player names, positions, birth dates, clubs, and team references.
+- **`referees`**: 52 referees.
+- **`stadiums`**: 16 tournament venues.
+The `matches` and `match_statistics` tables are part of the database structure. Loading match data and conducting further analysis remain as next steps.
 
-
+## Technologies
+- **Database:** PostgreSQL
+- **Database Management:** pgAdmin
+- **Programming Language:** Python
+- **Data Analysis:** Pandas, NumPy, Scikit-learn
+- **Development Environment:** Jupyter Notebook, Ubuntu/Linux
+- **Version Control:** Git and GitHub
+- **Planned Business Intelligence:** Power BI
